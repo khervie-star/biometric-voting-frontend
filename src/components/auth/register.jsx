@@ -12,8 +12,6 @@ import { Step1, Step2, Step3, Step4 } from "../steppers";
 
 const { Step } = Steps;
 
-const customDot = (dot, { status, index }) => <span>{index + 1}</span>;
-
 const Register = () => {
   const [current, setCurrent] = React.useState(0);
   const [steps, setSteps] = React.useState(3);
