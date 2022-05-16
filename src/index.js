@@ -3,16 +3,20 @@ import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from "react-router-dom";
 import './index.css';
 import 'antd/dist/antd.css';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import 'react-toastify/dist/ReactToastify.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    {/* <BrowserRouter> */}
-    <App />
-    {/* </BrowserRouter> */}
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </React.StrictMode>
 );
 

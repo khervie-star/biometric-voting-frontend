@@ -8,7 +8,11 @@ import {
   Dropdown,
   Menu,
 } from "antd";
-import { Step1, Step2, Step3, Step4 } from "../steppers";
+import { Step1, Step2, Step3 } from "../steppers";
+import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
 const { Step } = Steps;
 
@@ -27,6 +31,28 @@ const Register = () => {
   function onChange(date, dateString) {
     console.log(date, dateString);
   }
+
+  const schema = yup
+    .object({
+      email: yup
+        .string()
+        .email("Please provide a valid email")
+        .max(255)
+        .required("Email is required"),
+      first_name: yup.string().required(),
+      last_name: yup.string().required(),
+      middle_name: yup.string().required(),
+      password: yup
+        .string()
+        .required("Please provide a valid password")
+        .min(8, "Password is too short - should be 8 chars minimum."),
+      password2: yup
+        .string()
+        .required("Please provide a valid password")
+        .min(8, "Password is too short - should be 8 chars minimum.")
+        .oneOf([yup.ref("password"), null], "Passwords must match"),
+    })
+    .required();
 
   return (
     <div className="grid justify-center items-center text-center content-center h-full  gradient-form bg-[#5A4Ad1] md:h-screen">
