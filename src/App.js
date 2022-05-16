@@ -9,6 +9,7 @@ import Login from './pages/auth/login';
 import FAQ from "./pages/faq";
 import ElectionPage from './pages/elections';
 import PageNotFound from './pages/404';
+import Auth from "./helper/Auth";
 
 function App() {
   return (
@@ -35,16 +36,16 @@ function App() {
         <Route exact path="/faq" element={<FAQ />} />
         <Route exact path="*" element={<PageNotFound />} />
         {/* <Route  path="/dashboard" component={DashboardWrapper} /> */}
-        {/* {
-            Auth.getUserDetails() !== undefined &&
-              Auth.getUserDetails() !== null &&
-              Auth.getToken() !== undefined ? (
-              <Route path="/dashboard" component={DashboardWrapper} />
-            ) : (
-              // <Redirect to="/PageNotFound" />
-              <Route Redirect to="/PageNotFound" exact component={PageNotFound} />
-            )
-          } */}
+        {
+          Auth.getUserDetails() !== undefined &&
+            Auth.getUserDetails() !== null &&
+            Auth.getToken() !== undefined ? (
+            <Route path="/elections" element={<ElectionPage />} />
+          ) : (
+            // <Redirect to="/PageNotFound" />
+            <Route Redirect to="/PageNotFound" exact component={PageNotFound} />
+          )
+        }
       </Routes >
     </>
   );

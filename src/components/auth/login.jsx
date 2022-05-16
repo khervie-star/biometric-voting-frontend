@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { login } from "../../serverRequest/authRequest";
+import { userService } from "../../serverRequest/userService";
+import { toast } from "react-toastify";
 
 const schema = yup
   .object({
@@ -22,6 +23,7 @@ const schema = yup
 
 const Login = () => {
   const [loading, setLoading] = React.useState(false);
+
   const {
     register,
     handleSubmit,
@@ -33,16 +35,22 @@ const Login = () => {
   const onSubmit = (data) => {
     console.log(data);
     setLoading(true);
-    login(data)
-      .then((res) => {
+    return userService
+      .login(data)
+      .then((response) => {
+        // get return url from query parameters or default to '/'
+        toast.success("Login Successful");
+        // setTimeout(() => {
+        //   const returnUrl = router.query.returnUrl || "/";
+        //   router.push(returnUrl), 5000;
+        // });
         setLoading(false);
-        console.log(res);
-        return res;
+        console.log(response);
       })
       .catch((error) => {
-        console.log("loginsignin error");
-        console.log(error.response);
         setLoading(false);
+        console.log(error);
+        toast.error(error.message);
       });
   };
 

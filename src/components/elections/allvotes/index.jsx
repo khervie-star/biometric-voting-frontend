@@ -33,7 +33,7 @@ export default function Elections() {
                       <div className="flex items-center">
                         <h2 className="text-lg font-semibold">{data.name}</h2>
                       </div>
-                      <p className="text-xs text-gray-600 mt-2">{data.time}</p>
+                      <p className="text-xs text-gray-600 mt-2">{data.date}</p>
                       <div className="flex mt-4">
                         <div>
                           <p className="text-xs text-gray-600 px-2 bg-gray-200 py-1">

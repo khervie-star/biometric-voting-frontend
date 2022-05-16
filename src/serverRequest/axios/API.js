@@ -8,6 +8,8 @@ const API = (config) => {
   if (Auth.user_token) {
     const token = Auth.getToken();
     config.headers = {
+      'Access-Control-Allow-Origin': '*',
+      'Content-Type': 'application/json',
       Authorization: `Bearer ${Auth.getToken()}`
     };
   }
@@ -19,7 +21,7 @@ const API = (config) => {
     function (error) {
       if (!error.response) {
         error.response = {
-          data: "net work error",
+          data: "network error",
           status: 500,
         };
       }
