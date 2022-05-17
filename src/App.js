@@ -8,6 +8,7 @@ import Register from './pages/auth/register';
 import Login from './pages/auth/login';
 import FAQ from "./pages/faq";
 import ElectionPage from './pages/elections';
+import SingleElection from "./pages/elections/[id]";
 import PageNotFound from './pages/404';
 import Auth from "./helper/Auth";
 
@@ -33,6 +34,7 @@ function App() {
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/register" element={<Register />} />
         <Route exact path="/elections" element={<ElectionPage />} />
+        <Route exact path="/elections/:slug" element={<SingleElection />} />
         <Route exact path="/faq" element={<FAQ />} />
         <Route exact path="*" element={<PageNotFound />} />
         {/* <Route  path="/dashboard" component={DashboardWrapper} /> */}

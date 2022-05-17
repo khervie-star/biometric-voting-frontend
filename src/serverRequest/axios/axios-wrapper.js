@@ -29,7 +29,7 @@ function post(url, body) {
     method: 'POST',
     mode: 'cors',
     headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', ...authHeader(url) },
-    // credentials: 'include',
+    credentials: 'include',
     body: JSON.stringify(body)
   };
   return fetch(url, requestOptions).then(handleResponse);
@@ -40,21 +40,12 @@ function postAuth(url, body) {
     method: 'POST',
     mode: 'cors',
     headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', ...authHeader(url) },
-    // credentials: 'include',
+    credentials: 'include',
     body: JSON.stringify(body)
   };
   return fetch(url, requestOptions).then(handleResponse2);
 }
 
-// function postAuth(url, body) {
-//   body = JSON.stringify(body);
-
-//   const options = {
-//     headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', ...authHeader(url) }
-//   };
-//   return axios.post(url, body, options)
-//     .then(handleResponse2)
-// }
 
 function patch(url, body) {
   const requestOptions = {

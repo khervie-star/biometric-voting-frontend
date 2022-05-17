@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fullpage/react-fullpage": "^0.1.24",
     "@headlessui/react": "^1.6.1",
     "@heroicons/react": "^1.0.6",
     "@hookform/resolvers": "^2.8.9",
@@ -15,6 +16,7 @@
     "postcss": "^8.4.13",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "react-full-page": "^0.1.12",
     "react-helmet": "^6.1.0",
     "react-hook-form": "^7.31.1",
     "react-router-dom": "^6.3.0",

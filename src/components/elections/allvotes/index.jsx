@@ -1,8 +1,27 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import { userService } from "../../../serverRequest/userService";
 import { electionData } from "../../../utils/data";
 
 export default function Elections() {
+  const [allElections, setAllElections] = React.useState([]);
+  const [dataFetching, setDataFetching] = React.useState(false);
+
+  React.useEffect(() => {
+    setDataFetching(true);
+    userService
+      .getActiveElections()
+      .then((res) => {
+        console.log(res);
+        setAllElections(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error(error.message);
+      });
+  }, []);
+
   return (
     <>
       <div className="bg-gray-100 ">
@@ -11,7 +30,7 @@ export default function Elections() {
           <div className="flex flex-wrap items-center justify-center">
             {/* Card 1 */}
             {electionData?.map((data, index) => (
-              <Link to={`/${data.id}`}>
+              <Link to={`${data.id}`}>
                 <div className="mx-2 my-4 w-72 lg:mb-0 mb-8" key={index}>
                   <div className="bg-white">
                     <div className="flex items-center justify-end px-4 pt-4">
