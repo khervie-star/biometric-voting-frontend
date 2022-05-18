@@ -3,13 +3,13 @@ import * as React from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 import { Link } from "react-router-dom";
+import Auth from "../../helper/Auth";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function Navbar() {
-  const [authenticated, setAuthenticated] = React.useState(false);
   const [menu, setMenu] = React.useState(false);
   const [show, setShow] = React.useState(null);
   const [profile, setProfile] = React.useState(false);
@@ -220,24 +220,9 @@ export default function Navbar() {
                 </Link>
               </div>
               <div className="hidden xl:flex items-center">
-                {authenticated ? (
-                  <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                    <Link
-                      to="/login"
-                      type="button"
-                      className="bg-red py-2 px-4 rounded-0 text-grey-400 text-md hover:text-white focus:outline-none focus:ring-0 "
-                    >
-                      Sign In
-                    </Link>
-                    <Link
-                      to="/register"
-                      type="button"
-                      className="bg-red py-2 px-4 rounded-0 text-grey-400 text-md hover:text-white focus:outline-none focus:ring-0 "
-                    >
-                      Sign Up
-                    </Link>
-                  </div>
-                ) : (
+                {Auth.getUserDetails() !== undefined &&
+                Auth.getUserDetails() !== null &&
+                Auth.getToken() !== undefined ? (
                   <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                     {/* Profile dropdown */}
                     <Menu as="div" className="ml-3 relative">
@@ -304,7 +289,24 @@ export default function Navbar() {
                       </Transition>
                     </Menu>
                   </div>
-                )}
+                ) : (
+                  <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                    <Link
+                      to="/login"
+                      type="button"
+                      className="bg-red py-2 px-4 rounded-0 text-grey-400 text-md hover:text-white focus:outline-none focus:ring-0 "
+                    >
+                      Sign In
+                    </Link>
+                    <Link
+                      to="/register"
+                      type="button"
+                      className="bg-red py-2 px-4 rounded-0 text-grey-400 text-md hover:text-white focus:outline-none focus:ring-0 "
+                    >
+                      Sign Up
+                    </Link>
+                  </div>
+                )}{" "}
               </div>
             </div>
           </div>
