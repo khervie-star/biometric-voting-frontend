@@ -1,7 +1,7 @@
 import Auth from "../../helper/Auth";
 import axios from "axios";
 
-const URL = "https://gvoting.herokuapp.com/api/";
+const URL = "https://gvoting.herokuapp.com/api";
 
 const API = (config) => {
   //header authorization
@@ -32,7 +32,7 @@ const API = (config) => {
       return Promise.reject(error);
     }
   );
-  config.baseURL = URL;
+  // config.baseURL = URL;
   return axios(config);
 };
 export default API;

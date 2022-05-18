@@ -6,6 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { userService } from "../../serverRequest/userService";
 import { toast } from "react-toastify";
+import axios from "axios";
 
 const schema = yup
   .object({
@@ -36,7 +37,7 @@ const Login = () => {
     console.log(data);
     setLoading(true);
     return userService
-      .login(data)
+      .axiosLogin(data)
       .then((response) => {
         // get return url from query parameters or default to '/'
         toast.success("Login Successful");

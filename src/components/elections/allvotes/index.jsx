@@ -13,7 +13,7 @@ export default function Elections() {
     userService
       .getActiveElections()
       .then((res) => {
-        console.log(res);
+        console.log(res.data);
         setAllElections(res.data);
       })
       .catch((error) => {
@@ -29,22 +29,24 @@ export default function Elections() {
         <div className="mx-auto container py-8">
           <div className="flex flex-wrap items-center justify-center">
             {/* Card 1 */}
-            {electionData?.map((data, index) => (
-              <Link to={`${data.id}`}>
+            {allElections?.map((data, index) => (
+              <Link to={`${data.slug}`}>
                 <div className="mx-2 my-4 w-72 lg:mb-0 mb-8" key={index}>
                   <div className="bg-white">
                     <div className="flex items-center justify-end px-4 pt-4">
                       <div
                         className={`py-1.5 my-0 px-6 rounded-full ${
-                          !data.active ? "bg-red-200" : "bg-green-200"
+                          !data.users_can_vote ? "bg-red-200" : "bg-green-200"
                         }`}
                       >
                         <p
                           className={`text-xs  my-0 ${
-                            !data.active ? "text-red-500" : "text-green-500"
+                            !data.users_can_vote
+                              ? "text-red-500"
+                              : "text-green-500"
                           }`}
                         >
-                          {!data.active ? "Closed" : "Active"}
+                          {!data.users_can_vote ? "Inactive" : "Active"}
                         </p>
                       </div>
                     </div>
@@ -52,17 +54,24 @@ export default function Elections() {
                       <div className="flex items-center">
                         <h2 className="text-lg font-semibold">{data.name}</h2>
                       </div>
-                      <p className="text-xs text-gray-600 mt-2">{data.date}</p>
+                      <p className="text-xs text-gray-600 mt-2">
+                        {data.election_date}
+                      </p>
                       <div className="flex mt-4">
                         <div>
                           <p className="text-xs text-gray-600 px-2 bg-gray-200 py-1">
-                            {data.category}
+                            Presidency
+                          </p>
+                        </div>
+                        <div className="ml-2">
+                          <p className="text-xs text-gray-600 px-2 bg-gray-200 py-1">
+                            Governorship
                           </p>
                         </div>
                       </div>
                       <div className="flex items-center justify-between py-4">
                         <h2 className="text-indigo-700 text-xs font-semibold">
-                          {data.votes}{" "}
+                          {data.number_of_votes}{" "}
                           <span className="text-xs text-grey-900">votes</span>
                         </h2>
                         <h3 className="text-indigo-700 text-lg font-semibold"></h3>

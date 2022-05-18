@@ -1,8 +1,9 @@
 import API from '../axios/API';
 import { axiosWrapper } from "../axios/axios-wrapper"
+import axios from "axios"
 import Auth from "../../helper/Auth";
 
-const baseUrl = "https://gvoting.herokuapp.com/api/";
+const baseUrl = "https://gvoting.herokuapp.com/api";
 
 
 // const userSubject = new BehaviorSubject(process.browser && JSON.parse(localStorage.getItem('user')));
@@ -10,42 +11,38 @@ const baseUrl = "https://gvoting.herokuapp.com/api/";
 
 export const userService = {
   login,
-  axiosLogin,
   logout,
   register,
-  axiosRegister,
   getActiveElections,
-  axiosGetActiveElections,
   getSingleElection,
-  axiosGetSingleElection,
 
 };
 
 
-function login(data) {
-  return axiosWrapper.post(`${baseUrl}/login`, data)
-    .then(res => {
-      // publish user to subscribers and store in local storage to stay logged in between page refreshes
-      console.log(res)
-      Auth.setUserToken(res.data.token)
-      return res;
-    });
-}
+// function login(data) {
+//   return axiosWrapper.post(`${baseUrl}/login`, data)
+//     .then(res => {
+//       // publish user to subscribers and store in local storage to stay logged in between page refreshes
+//       console.log(res)
+//       Auth.setUserToken(res.data.token)
+//       return res;
+//     });
+// }
 
-function axiosLogin(data) {
+function login(data) {
   return API({
     method: "POST",
-    url: `/login`,
+    url: `${baseUrl}/login`,
     data: data
   })
     .then(res => {
       console.log(res)
-      Auth.setUserToken(res.data.success.token);
+      // Auth.setUserToken(res.data.success.token);
       return res;
     })
     .catch(error => {
       console.log(error)
-      throw error;
+      // throw error;
     });
 };
 
@@ -55,16 +52,16 @@ function logout() {
   Auth.logout()
 }
 
-function register(user) {
-  return axiosWrapper.post(`${baseUrl}/register-voter`, user)
-    .then(res => {
-      console.log(res)
-      Auth.setUserToken(res.data.success.token);
-      return res;
-    });
-}
+// function register(user) {
+//   return axiosWrapper.post(`${baseUrl}/register-voter`, user)
+//     .then(res => {
+//       console.log(res)
+//       Auth.setUserToken(res.data.success.token);
+//       return res;
+//     });
+// }
 
-function axiosRegister(data) {
+function register(data) {
   return API({
     method: "POST",
     url: `/register-voter`,
@@ -82,14 +79,14 @@ function axiosRegister(data) {
 };
 
 // Elections
-function getActiveElections() {
-  return axiosWrapper.get(`${baseUrl}/active-elections`)
-}
+// function getActiveElections() {
+//   return axiosWrapper.get(`${baseUrl}/active-elections`)
+// }
 
-function axiosGetActiveElections() {
-  return API({
+function getActiveElections() {
+  return axios({
     method: "GET",
-    url: `/active-elections`,
+    url: `${baseUrl}/active-elections`,
   })
     .then(res => {
       console.log(res)
@@ -102,14 +99,14 @@ function axiosGetActiveElections() {
 };
 
 
-function getSingleElection(electionSlug) {
-  return axiosWrapper.get(`${baseUrl}/election/${electionSlug}`)
-}
+// function getSingleElection(electionSlug) {
+//   return axiosWrapper.get(`${baseUrl}/election/${electionSlug}`)
+// }
 
-function axiosGetSingleElection(electionSlug) {
-  return API({
+function getSingleElection(electionSlug) {
+  return axios({
     method: "GET",
-    url: `/active-elections/${electionSlug}`,
+    url: `${baseUrl}/election/${electionSlug}`,
   })
     .then(res => {
       console.log(res)
