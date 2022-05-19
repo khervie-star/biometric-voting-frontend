@@ -474,15 +474,35 @@ export default function Navbar() {
                 </div>
                 <div className="w-full pt-4">
                   <div className="border-t border-gray-300">
-                    <div className="w-full flex items-center justify-between pt-1">
-                      <div className="flex items-center">
-                        <img
-                          alt="profile-pic"
-                          src="https://tuk-cdn.s3.amazonaws.com/assets/components/boxed_layout/bl_1.png"
-                          className="w-8 h-8 rounded-md"
-                        />
+                    {Auth.user_token.length !== null &&
+                    Auth.user_token.length !== undefined ? (
+                      <div className="w-full flex items-center justify-between pt-1">
+                        <div className="flex items-center">
+                          <img
+                            alt="profile-pic"
+                            src="https://tuk-cdn.s3.amazonaws.com/assets/components/boxed_layout/bl_1.png"
+                            className="w-8 h-8 rounded-md"
+                          />
+                        </div>
                       </div>
-                    </div>
+                    ) : (
+                      <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                        <Link
+                          to="/login"
+                          type="button"
+                          className="bg-red py-2 px-4 rounded-0 text-grey-400 text-md hover:text-white focus:outline-none focus:ring-0 "
+                        >
+                          Sign In
+                        </Link>
+                        <Link
+                          to="/register"
+                          type="button"
+                          className="bg-red py-2 px-4 rounded-0 text-grey-400 text-md hover:text-white focus:outline-none focus:ring-0 "
+                        >
+                          Sign Up
+                        </Link>
+                      </div>
+                    )}{" "}
                   </div>
                 </div>
               </div>
