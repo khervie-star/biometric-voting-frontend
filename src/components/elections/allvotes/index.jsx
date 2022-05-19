@@ -32,7 +32,7 @@ export default function Elections() {
             {allElections?.map((data, index) => (
               <Link to={`${data.slug}`}>
                 <div className="mx-2 my-4 w-72 lg:mb-0 mb-8" key={index}>
-                  <div className="bg-white">
+                  <div className="bg-white shadow-[0px_7px_29px_0px_rgba(100, 100, 111, 0.2)]">
                     <div className="flex items-center justify-end px-4 pt-4">
                       <div
                         className={`py-1.5 my-0 px-6 rounded-full ${

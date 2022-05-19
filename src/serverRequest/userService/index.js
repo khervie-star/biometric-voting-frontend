@@ -30,14 +30,14 @@ export const userService = {
 // }
 
 function login(data) {
-  return API({
+  return axios({
     method: "POST",
     url: `${baseUrl}/login`,
     data: data
   })
     .then(res => {
       console.log(res)
-      // Auth.setUserToken(res.data.success.token);
+      Auth.setUserToken(res.data.token);
       return res;
     })
     .catch(error => {

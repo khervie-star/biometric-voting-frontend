@@ -2,6 +2,8 @@
 import * as React from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
+import { toast } from "react-toastify";
+import { userService } from "../../serverRequest/userService";
 import { Link } from "react-router-dom";
 import Auth from "../../helper/Auth";
 
@@ -12,7 +14,25 @@ function classNames(...classes) {
 export default function Navbar() {
   const [menu, setMenu] = React.useState(false);
   const [show, setShow] = React.useState(null);
+  const [loading, setLoading] = React.useState(false);
   const [profile, setProfile] = React.useState(false);
+
+  console.log(Auth.user_token.length);
+
+  const handleLogout = () => {
+    Auth.logout()
+      .then((response) => {
+        toast.info("Signed out!");
+        window.location.replace("/");
+        setLoading(false);
+        console.log(response);
+      })
+      .catch((error) => {
+        setLoading(false);
+        console.log(error);
+        toast.error(error.message);
+      });
+  };
 
   return (
     <>
@@ -220,9 +240,8 @@ export default function Navbar() {
                 </Link>
               </div>
               <div className="hidden xl:flex items-center">
-                {Auth.getUserDetails() !== undefined &&
-                Auth.getUserDetails() !== null &&
-                Auth.getToken() !== undefined ? (
+                {Auth.user_token.length !== null &&
+                Auth.user_token.length !== undefined ? (
                   <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                     {/* Profile dropdown */}
                     <Menu as="div" className="ml-3 relative">
@@ -274,15 +293,15 @@ export default function Navbar() {
                           </Menu.Item>
                           <Menu.Item>
                             {({ active }) => (
-                              <a
-                                href="#"
+                              <button
                                 className={classNames(
                                   active ? "bg-gray-100" : "",
                                   "block px-4 py-2 text-sm text-gray-700"
                                 )}
+                                onClick={handleLogout}
                               >
                                 Sign out
-                              </a>
+                              </button>
                             )}
                           </Menu.Item>
                         </Menu.Items>
@@ -364,8 +383,8 @@ export default function Navbar() {
         <div
           className={
             show
-              ? "w-full xl:hidden h-full absolute z-40  transform  translate-x-0 "
-              : "   w-full xl:hidden h-full absolute z-40  transform -translate-x-full"
+              ? "w-full xl:hidden h-full fixed z-40  transform  translate-x-0 "
+              : "   w-full xl:hidden h-full fixed z-40  transform -translate-x-full"
           }
         >
           <div
@@ -462,9 +481,6 @@ export default function Navbar() {
                           src="https://tuk-cdn.s3.amazonaws.com/assets/components/boxed_layout/bl_1.png"
                           className="w-8 h-8 rounded-md"
                         />
-                        <p className=" text-gray-800 text-base leading-4 ml-2">
-                          Jane Doe
-                        </p>
                       </div>
                     </div>
                   </div>

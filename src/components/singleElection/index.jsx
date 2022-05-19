@@ -22,7 +22,7 @@ const SingleElectionDetails = ({ title, candidates }) => {
         <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 justify-center gap-x-6 gap-y-5">
           {candidates?.map((candidate, index) => (
             <div
-              className="flex flex-col justify-center items-start p-2 bg-white"
+              className="flex flex-col justify-center items-start p-2 bg-white shadow-[0px_7px_29px_0px_rgba(100, 100, 111, 0.2)]"
               key={index}
             >
               <div className="relative">

@@ -3,3 +3,32 @@
 @tailwind components;
 
 @tailwind utilities;
+
+.slick-dots .slick-active div {
+  width: 40px !important;
+  border-radius: 10px !important;
+  marginright: 5px !important;
+  /* transition: 400ms ease-in-out; */
+}
+.slick-dots li {
+  position: relative;
+  display: inline-block;
+  margin: 0 5px;
+  padding: 0;
+  cursor: pointer;
+}
+.slick-dots li button {
+  border: 0;
+  display: block;
+  outline: none;
+  line-height: 0px;
+  font-size: 0px;
+  color: transparent;
+  padding: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.slick-dots li button :hover,
+.slick-dots li button :focus {
+  outline: none;
+}
