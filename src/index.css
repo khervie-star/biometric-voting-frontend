@@ -32,3 +32,36 @@
 .slick-dots li button :focus {
   outline: none;
 }
+
+.custom-shape-divider-bottom-1653301240 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1653301240 svg {
+  position: relative;
+  display: block;
+  width: calc(119% + 1.3px);
+  height: 150px;
+}
+
+.custom-shape-divider-bottom-1653301240 .shape-fill {
+  fill: #ffffff;
+}
+
+.spacer {
+  aspect-ratio: 960/540;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.layer1 {
+  background-image: url("./assets/svg/layer2.svg");
+}

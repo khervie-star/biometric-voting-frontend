@@ -27,9 +27,6 @@ const Highlight = () => {
             security. Common features include single-vote verification, which
             ensures members don’t inadvertently vote more than once;
           </p>
-          <a className=" cursor-pointer text-base leading-4 font-medium text-gray-800 border-b-2 border-gray-800 hover:text-gray-600 ">
-            Learn More
-          </a>
         </div>
 
         <div className=" p-6 bg-gray-50">
@@ -55,9 +52,6 @@ const Highlight = () => {
             counted in real time. Every step is accounted for and the
             organization can receive exact results instantaneously.
           </p>
-          <a className=" cursor-pointer text-base leading-4 font-medium text-gray-800 border-b-2 border-gray-800 hover:text-gray-600 ">
-            Learn More
-          </a>
         </div>
 
         <div className=" p-6 bg-gray-50">
@@ -83,9 +77,6 @@ const Highlight = () => {
             and eliminate the costs of renting a polling location and the
             printing of all materials used.
           </p>
-          <a className=" cursor-pointer text-base leading-4 font-medium text-gray-800 border-b-2 border-gray-800 hover:text-gray-600 ">
-            Learn More
-          </a>
         </div>
       </div>
     </div>

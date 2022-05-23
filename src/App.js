@@ -1,7 +1,13 @@
+import * as React from "react"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import { Slide, Zoom, Flip, Bounce } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import 'animate.css';
+import Particles from "react-tsparticles";
+import { loadFull } from "tsparticles";
 
 import LandingPage from "./pages/landingPage";
 import Register from './pages/auth/register';
@@ -13,6 +19,26 @@ import PageNotFound from './pages/404';
 import Auth from "./helper/Auth";
 
 function App() {
+
+  React.useEffect(() => {
+    AOS.init();
+    AOS.refresh();
+  }, []);
+
+  const particlesInit = async (main) => {
+    console.log(main);
+
+    // you can initialize the tsParticles instance (main) here, adding custom shapes or presets
+    // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
+    // starting from v2 you can add only the features you need reducing the bundle size
+    await loadFull(main);
+  };
+
+  const particlesLoaded = (container) => {
+    console.log(container);
+  };
+
+
   return (
     <>
       <ToastContainer
