@@ -6,6 +6,7 @@ import Hero from "../../components/landingPage/hero";
 import CTA1 from "../../components/landingPage/CTA1";
 import Highlight from "../../components/landingPage/highlight";
 import CTA2 from "../../components/landingPage/CTA2";
+import CTA3 from "../../components/landingPage/CTA3";
 
 const LandingPage = () => {
   return (
@@ -17,11 +18,10 @@ const LandingPage = () => {
       </Helmet>
       <Navbar />
       <Hero />
+      <CTA3 />
       <CTA2 />
       <CTA1 />
-      <div class="spacer layer1"></div>
       <Highlight />
-      <div class="spacer layer1"></div>
       <Footer />
     </div>
   );

@@ -46,7 +46,10 @@ function CTA2() {
                   </div>
                 </div>
               </div>
-              <div className="lg:w-1/3 md:w-1/2 w-full relative h-96 flex items-end justify-center">
+              <div
+                className="lg:w-1/3 md:w-1/2 w-full relative h-96 flex items-end justify-center"
+                data-aos="fade-right"
+              >
                 <img
                   className="absolute w-full h-full inset-0 object-cover object-center rounded-md"
                   src="https://cdn.tuk.dev/assets/templates/prodify/invoicing-system.png"

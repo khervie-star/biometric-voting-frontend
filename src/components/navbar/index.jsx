@@ -37,7 +37,7 @@ export default function Navbar() {
   return (
     <>
       {/* Code block starts */}
-      <nav className="bg-transparent xl:block hidden fixed w-full z-50">
+      <nav className="bg-white xl:block hidden fixed w-full z-50">
         <div className="mx-auto container px-6 py-2 xl:py-0">
           <div className="flex items-center justify-between">
             <div className="inset-y-0 left-0 flex items-center xl:hidden">

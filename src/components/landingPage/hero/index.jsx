@@ -4,28 +4,27 @@ import heroVector from "../../../assets/img/vecteezy_people-vote-us-election_.jp
 function Hero() {
   return (
     <>
-      <div className="relative w-full h-[90vh] pb-10 bg-gradient-to-r from-[#ff00cc] via-purple-500 to-[#333399]">
+      <div className="relative w-full h-[90vh] pb-10 bg-white">
         <div className="relative px-10 py-10 container mx-auto md:flex items-center gap-8">
           <div className="text-color w-full md:w-1/3 pt-16 lg:pt-32 xl:pt-12">
             <h1
-              className="text-3xl md:text-3xl lg:text-6xl w-11/12 lg:w-11/12 xl:w-full xl:text-6xl text-white/80 font-light f-f-l"
+              className="text-3xl md:text-3xl lg:text-6xl w-11/12 lg:w-11/12 xl:w-full xl:text-6xl text-[#ff00cc] font-light f-f-l"
               data-aos="fade-up"
             >
               Electronic
               <br />
-              <span className="font-extrabold f-f-l">Voting</span>
+              <span className="font-extrabold f-f-l text-[#333399]">
+                Voting
+              </span>
             </h1>
             <div className="w-[200px] h-[1px] bg-white/70" />
             <div
-              className="f-f-r text-[#fafafa] text-base lg:text-base pb-20 sm:pb-0 pt-10 xl:pt-6 font-normal"
+              className="f-f-r text-[#121212] text-base lg:text-base pb-20 sm:pb-0 pt-10 xl:pt-6 font-normal"
               data-aos="fade-up"
             >
               <h2>
-                Aute duis amet reprehenderit est aliqua consequat incididunt
-                deserunt et labore sunt irure Lorem. Pariatur proident velit
-                proident irure aute pariatur sunt voluptate. Id cillum laboris
-                id velit ut adipisicing amet do. Occaecat deserunt do quis
-                dolore qui ut tempor duis culpa duis ea id quis nulla.
+                Conduct remote elections and voting without reputational or
+                legal risks.
               </h2>
             </div>
             <div className="lg:flex">
@@ -39,7 +38,7 @@ function Hero() {
               <img src={heroVector} width="100%" height="100%" />
             </div>
           </div>
-
+          {/* gradient-to-r from-[#ff00cc] via-purple-500 to-[#333399] */}
           <button className="md:hidden hover:opacity-90 text-base w-full xl:text-base xl:w-6/12 mt-4 xl:mt-8 f-f-r py-4  bg-indigo-700 text-white font-bold focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 rounded-lg">
             Get started
           </button>
